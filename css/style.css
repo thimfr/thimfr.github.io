@@ -1,6 +1,3 @@
-/* ==========================================================================
-   1. VARIÁVEIS GERAIS E CONFIGURAÇÃO BASE
-   ========================================================================== */
 :root {
   --cor-fundo: #0f172a;
   --cor-card: #1e293b;
@@ -33,9 +30,6 @@ body {
   padding: 0;
 }
 
-/* ==========================================================================
-   2. CABEÇALHO FIXO E MENU SANDUÍCHE (CSS PURO)
-   ========================================================================== */
 .header-principal {
   position: fixed;
   top: 0;
@@ -70,14 +64,12 @@ body {
   display: block;
 }
 
-/* Checkbox invisível para controlar o menu */
 .menu-checkbox {
   position: absolute;
   opacity: 0;
   pointer-events: none;
 }
 
-/* Ícone do Hambúrguer (3 linhas) */
 .menu-icon {
   display: flex;
   flex-direction: column;
@@ -94,16 +86,20 @@ body {
   height: 3px;
   background-color: var(--cor-texto);
   border-radius: 2px;
-  transition: transform 0.3s ease, opacity 0.3s ease;
+  transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.2s ease;
 }
 
-/* Menu Dropdown no Mobile */
+.menu-icon:hover .linha {
+  background-color: var(--cor-primaria);
+}
+
 .menu-lista {
   position: fixed;
   top: var(--altura-header);
   left: 0;
   width: 100%;
-  background-color: var(--cor-card);
+  background-color: rgba(30, 41, 59, 0.98);
+  backdrop-filter: blur(10px);
   list-style: none;
   margin: 0;
   padding: 0;
@@ -112,8 +108,8 @@ body {
   align-items: center;
   gap: 1.25rem;
   border-bottom: 1px solid var(--cor-borda);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
 
-  /* Escondido por padrão no mobile */
   max-height: 0;
   overflow: hidden;
   opacity: 0;
@@ -139,14 +135,12 @@ body {
   font-style: italic;
 }
 
-/* Ação quando o hambúrguer é clicado (checked) */
 .menu-checkbox:checked ~ .menu-lista {
   max-height: 300px;
   padding: 1.5rem 0;
   opacity: 1;
 }
 
-/* Animação do ícone mudando para X */
 .menu-checkbox:checked ~ .menu-icon .linha:nth-child(1) {
   transform: translateY(9.5px) rotate(45deg);
 }
@@ -159,9 +153,6 @@ body {
   transform: translateY(-9.5px) rotate(-45deg);
 }
 
-/* ==========================================================================
-   3. ESTRUTURA DE 1 COLUNA E CONTEÚDO PRINCIPAL
-   ========================================================================== */
 .conteudo-principal {
   max-width: var(--largura-maxima);
   margin: 0 auto;
@@ -223,7 +214,6 @@ li {
   margin-bottom: 0.5rem;
 }
 
-/* Imagens da Sessão 1 */
 .imagem-destaque {
   margin: 2rem 0;
   text-align: center;
@@ -244,9 +234,6 @@ figcaption {
   font-style: italic;
 }
 
-/* ==========================================================================
-   4. GALERIA DE FOTOS EM FLEXBOX E REFERÊNCIAS
-   ========================================================================== */
 .galeria-flex {
   display: flex;
   flex-wrap: wrap;
@@ -278,7 +265,6 @@ figcaption {
   font-style: normal;
 }
 
-/* Bloco de Referências */
 .referencias-container {
   margin-top: 3.5rem;
   padding: 1.5rem;
@@ -298,9 +284,6 @@ figcaption {
   word-break: break-word;
 }
 
-/* ==========================================================================
-   5. RODAPÉ
-   ========================================================================== */
 .rodape-principal {
   background-color: #090d16;
   border-top: 1px solid var(--cor-borda);
@@ -320,44 +303,16 @@ figcaption {
   margin-bottom: 0.5rem;
 }
 
-/* ==========================================================================
-   6. RESPONSIVIDADE E MEDIA QUERIES (375px a 1920px)
-   ========================================================================== */
-
-/* Tablets e Desktop (>= 768px) */
 @media (min-width: 768px) {
   h1 {
     font-size: 2.5rem;
   }
 
-  /* Oculta o ícone do hambúrguer e expande o menu na horizontal */
-  .menu-icon {
-    display: none;
-  }
-
-  .menu-lista {
-    position: static;
-    max-height: none;
-    opacity: 1;
-    flex-direction: row;
-    background-color: transparent;
-    padding: 0;
-    border-bottom: none;
-    gap: 1.5rem;
-    overflow: visible;
-  }
-
-  .menu-lista a {
-    font-size: 0.95rem;
-  }
-
-  /* Galeria em 2 Colunas */
   .galeria-item {
     flex: 0 1 calc(50% - 0.75rem);
   }
 }
 
-/* Desktops Grandes (>= 1200px) */
 @media (min-width: 1200px) {
   :root {
     --largura-maxima: 1000px;
