@@ -162,7 +162,7 @@ body {
 }
 
 .menu-checkbox:checked ~ .menu-icon .linha:nth-child(3) {
-  transform: translateY(-9.5px) rotate(-45deg);
+  transform: translateX(-9.5px) rotate(-45deg);
 }
 
 .conteudo-principal {
